@@ -38,7 +38,7 @@ export const CrtOverlay: React.FC<CrtOverlayProps> = ({
           <div className="pointer-events-none absolute inset-0 z-40 bg-[radial-gradient(circle_at_center,transparent_70%,rgba(0,0,0,0.4)_100%)]" />
 
           {/* Render children with scrolling support */}
-          <div className="relative z-10 flex-1 flex flex-col overflow-y-auto min-h-0 bg-transparent">
+          <div className="relative z-10 flex-1 flex flex-col overflow-y-auto overflow-x-hidden min-h-0 bg-transparent custom-scrollbar">
             {children}
           </div>
         </div>

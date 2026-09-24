@@ -94,20 +94,26 @@
   animation: textGlowPulse 0.4s ease-in-out infinite;
 }
 
-.landscape-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background-color: #020617;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* Custom Mini Scrollbars for mobile & desktop */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
 }
 
-@media (max-width: 767px) and (orientation: portrait) {
-  .landscape-overlay {
-    display: flex;
-  }
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.4);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.8);
+}
+
+.landscape-overlay {
+  display: none;
 }

@@ -177,7 +177,7 @@ export const StageSelect: React.FC<StageSelectProps> = ({
         <div
           ref={scrollRef}
           onWheel={handleWheel}
-          className="w-full flex flex-row items-center gap-3 sm:gap-4 px-12 sm:px-16 py-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory custom-scrollbar min-h-0 justify-start"
+          className="w-full flex flex-row items-center gap-2.5 sm:gap-4 px-6 sm:px-16 py-2 sm:py-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory custom-scrollbar min-h-0 justify-start"
         >
           {STAGES_MODES.map((stage, idx) => {
             const isSelected = hoveredIdx === idx;
@@ -190,7 +190,7 @@ export const StageSelect: React.FC<StageSelectProps> = ({
                 transition={{ delay: idx * 0.05 }}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => handleSelect(stage.id)}
-                className={`relative snap-center shrink-0 w-52 sm:w-60 rounded-2xl p-3 sm:p-3.5 border-2 transition-all cursor-pointer flex flex-col justify-between overflow-hidden group shadow-lg ${
+                className={`relative snap-center shrink-0 w-44 xs:w-48 sm:w-60 rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 border-2 transition-all cursor-pointer flex flex-col justify-between overflow-hidden group shadow-lg ${
                   isSelected
                     ? 'bg-slate-800 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] scale-102 z-10'
                     : 'bg-slate-900 border-slate-700 hover:border-slate-500 opacity-90'
@@ -198,38 +198,38 @@ export const StageSelect: React.FC<StageSelectProps> = ({
               >
                 {/* Mode Top Info */}
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className="text-[9px] font-bold px-2 py-0.5 bg-slate-950/80 text-cyan-300 rounded-full uppercase tracking-wider mb-2 border border-slate-700/60">
+                  <div className="text-[8px] sm:text-[9px] font-bold px-2 py-0.5 bg-slate-950/80 text-cyan-300 rounded-full uppercase tracking-wider mb-1 sm:mb-2 border border-slate-700/60">
                     {stage.badge}
                   </div>
 
-                  <div className="text-3xl sm:text-4xl text-center mb-2 group-hover:scale-110 transition-transform duration-200 drop-shadow">
+                  <div className="text-2xl sm:text-4xl text-center mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-200 drop-shadow">
                     {stage.emoji}
                   </div>
 
-                  <h3 className="font-['Press_Start_2P'] text-[11px] sm:text-xs text-white text-center mb-1 leading-tight">
+                  <h3 className="font-['Press_Start_2P'] text-[10px] sm:text-xs text-white text-center mb-0.5 sm:mb-1 leading-tight">
                     {stage.title}
                   </h3>
-                  <div className="text-[10px] text-cyan-400 text-center mb-1.5 font-bold tracking-wide">
+                  <div className="text-[9px] sm:text-[10px] text-cyan-400 text-center mb-1 font-bold tracking-wide">
                     {stage.subtitle}
                   </div>
 
-                  <p className="text-[11px] text-slate-400 text-center leading-relaxed line-clamp-2">
+                  <p className="text-[9.5px] sm:text-[11px] text-slate-400 text-center leading-snug line-clamp-2">
                     {stage.description}
                   </p>
                 </div>
 
                 {/* Mode Action Button */}
-                <div className="relative z-10 mt-3 pt-2.5 border-t border-slate-700/50">
+                <div className="relative z-10 mt-2 sm:mt-3 pt-2 sm:pt-2.5 border-t border-slate-700/50">
                   <button
                     id={`btn-select-stage-${stage.id}`}
-                    className={`w-full py-2 sm:py-2.5 rounded-xl font-bold text-xs transition-all flex items-center justify-center space-x-1.5 ${
+                    className={`w-full py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl font-bold text-[10px] sm:text-xs transition-all flex items-center justify-center space-x-1.5 ${
                       isSelected
-                        ? 'bg-cyan-600 text-white shadow-[0_3px_0_rgb(8,145,178)] active:shadow-none active:translate-y-[2px] border border-cyan-400'
+                        ? 'bg-cyan-600 text-white shadow-[0_2px_0_rgb(8,145,178)] active:shadow-none active:translate-y-[2px] border border-cyan-400'
                         : 'bg-slate-800 text-slate-300 group-hover:bg-slate-700 group-hover:text-white'
                     }`}
                   >
                     <span>SELECT MODE</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
+                    <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </button>
                 </div>
               </motion.div>

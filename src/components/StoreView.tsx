@@ -213,7 +213,7 @@ export const StoreView: React.FC<StoreViewProps> = ({ onBack }) => {
       </AnimatePresence>
 
       {/* Main Tab Content */}
-      <div className="flex-1 min-h-0 overflow-y-auto p-2 sm:p-4">
+      <div className="flex-1 min-h-0 overflow-y-auto p-2 sm:p-4 custom-scrollbar">
 
         {/* TAB 1: FIGHTERS / UNLOCKS */}
         {activeTab === 'fighters' && (

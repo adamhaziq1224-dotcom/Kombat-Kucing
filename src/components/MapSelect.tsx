@@ -46,8 +46,8 @@ export const MapSelect: React.FC<MapSelectProps> = ({ onSelectMap, onBack }) => 
       </div>
 
       {/* Grid Container - Fitted to Window without Scroll */}
-      <div className="flex-1 min-h-0 p-2 sm:p-4 flex items-center justify-center overflow-hidden">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3.5 max-w-6xl w-full h-full max-h-[82vh] content-center">
+      <div className="flex-1 min-h-0 p-2 sm:p-4 flex items-center justify-center overflow-y-auto sm:overflow-hidden custom-scrollbar">
+        <div className="grid grid-cols-2 landscape:grid-cols-3 md:grid-cols-3 gap-1.5 sm:gap-3.5 max-w-6xl w-full content-center">
           {MAPS.map((map, idx) => {
             const isSelected = hoveredIdx === idx;
             const isReal = !!map.isRealEnvironment;
@@ -60,7 +60,7 @@ export const MapSelect: React.FC<MapSelectProps> = ({ onSelectMap, onBack }) => 
                 transition={{ delay: idx * 0.04 }}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => handleSelect(map)}
-                className={`relative rounded-xl sm:rounded-2xl p-2 sm:p-3 border-2 transition-all cursor-pointer flex flex-col justify-between overflow-hidden group h-full min-h-[110px] max-h-[185px] ${
+                className={`relative rounded-xl sm:rounded-2xl p-1.5 sm:p-3 border-2 transition-all cursor-pointer flex flex-col justify-between overflow-hidden group min-h-[95px] sm:min-h-[110px] max-h-[185px] ${
                   isSelected
                     ? 'border-cyan-400 shadow-[0_0_18px_rgba(6,182,212,0.45)] ring-1 ring-cyan-400/50 scale-[1.02] z-10'
                     : 'border-slate-800/80 hover:border-slate-600 bg-slate-900/80'

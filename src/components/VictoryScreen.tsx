@@ -122,7 +122,7 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({
         }`}
       />
       
-      <div className="relative z-10 max-w-md w-full flex flex-col items-center justify-center my-auto py-1 space-y-2 sm:space-y-2.5">
+      <div className="relative z-10 max-w-md w-full flex flex-col items-center justify-center my-auto py-1 space-y-1.5 sm:space-y-2.5">
         {/* Layer 1: Title Announcement */}
         <motion.div
           initial={{ scale: 0.8, y: -10, opacity: 0 }}
@@ -132,26 +132,26 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({
         >
           {isVictory ? (
             <div className="space-y-0.5 sm:space-y-1">
-              <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-yellow-400/10 border border-yellow-400/50 text-yellow-300 font-bold text-[9px] sm:text-[10px] uppercase tracking-widest shadow-sm">
+              <div className="inline-flex items-center space-x-1.5 px-2 py-0.2 rounded-full bg-yellow-400/10 border border-yellow-400/50 text-yellow-300 font-bold text-[8px] sm:text-[10px] uppercase tracking-widest shadow-sm">
                 <Trophy className="w-3 h-3 text-yellow-400" />
                 <span>CHAMPION</span>
               </div>
-              <h1 className="font-['Press_Start_2P'] text-lg sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 drop-shadow py-0.5">
+              <h1 className="font-['Press_Start_2P'] text-base sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 drop-shadow py-0.5">
                 VICTORY!
               </h1>
-              <p className="text-[10px] sm:text-xs text-slate-300 font-medium">
+              <p className="text-[9px] sm:text-xs text-slate-300 font-medium">
                 You proved your strength and emerged victorious.
               </p>
             </div>
           ) : (
             <div className="space-y-0.5 sm:space-y-1">
-              <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-rose-500/10 border border-rose-500/50 text-rose-300 font-bold text-[9px] sm:text-[10px] uppercase tracking-widest">
+              <div className="inline-flex items-center space-x-1.5 px-2 py-0.2 rounded-full bg-rose-500/10 border border-rose-500/50 text-rose-300 font-bold text-[8px] sm:text-[10px] uppercase tracking-widest">
                 <span>DEFEAT</span>
               </div>
-              <h1 className="font-['Press_Start_2P'] text-lg sm:text-2xl text-rose-500 drop-shadow py-0.5">
+              <h1 className="font-['Press_Start_2P'] text-base sm:text-2xl text-rose-500 drop-shadow py-0.5">
                 GAME OVER
               </h1>
-              <p className="text-[10px] sm:text-xs text-slate-300 font-medium">
+              <p className="text-[9px] sm:text-xs text-slate-300 font-medium">
                 You fought bravely, but the opponent was stronger...
               </p>
             </div>
@@ -166,28 +166,28 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({
           className="w-full flex flex-col items-center relative"
         >
           {/* Spotlight Glow */}
-          <div className={`absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-24 rounded-full blur-xl pointer-events-none ${
+          <div className={`absolute top-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-20 rounded-full blur-xl pointer-events-none ${
             isVictory ? 'bg-amber-500/20' : 'bg-rose-600/20'
           }`} />
           
           {/* Sprite Box with strict bounded height and centered scaling */}
-          <div className="relative h-20 sm:h-24 w-full flex flex-col items-center justify-end overflow-visible">
-            <div className="scale-[0.55] sm:scale-[0.65] origin-bottom flex items-center justify-center -mb-2">
+          <div className="relative h-16 sm:h-24 w-full flex flex-col items-center justify-end overflow-visible">
+            <div className="scale-[0.48] sm:scale-[0.65] origin-bottom flex items-center justify-center -mb-2">
               <PixelSprite
                 character={isVictory ? player : enemy}
                 action={isVictory ? 'victory' : 'idle'}
               />
             </div>
             {/* Ground Shadow under Sprite */}
-            <div className="w-24 sm:w-28 h-2 bg-black/60 rounded-full blur-[2px] mt-1 shrink-0" />
+            <div className="w-20 sm:w-28 h-1.5 sm:h-2 bg-black/60 rounded-full blur-[2px] mt-0.5 shrink-0" />
           </div>
 
           {/* Character Name & Role badge - clearly positioned below sprite */}
-          <div className="flex items-center space-x-2 mt-2 z-10">
-            <div className="font-['Press_Start_2P'] text-[10px] sm:text-xs text-white drop-shadow tracking-wide">
+          <div className="flex items-center space-x-1.5 mt-1 sm:mt-2 z-10">
+            <div className="font-['Press_Start_2P'] text-[9px] sm:text-xs text-white drop-shadow tracking-wide">
               {isVictory ? player.name : enemy.name}
             </div>
-            <span className={`text-[7px] sm:text-[8px] font-mono font-bold px-1.5 py-0.5 rounded border uppercase ${
+            <span className={`text-[6.5px] sm:text-[8px] font-mono font-bold px-1.5 py-0.2 rounded border uppercase ${
               isVictory ? 'bg-amber-950/80 text-amber-300 border-amber-500/50' : 'bg-rose-950/80 text-rose-300 border-rose-500/50'
             }`}>
               {isVictory ? player.archetype : enemy.archetype}
@@ -195,8 +195,8 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({
           </div>
 
           {/* Dialogue Quote Box - dedicated row with distinct spacing */}
-          <div className="w-full max-w-sm mt-1.5 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-700/60 shadow-sm text-center z-10">
-            <p className="text-[10px] sm:text-xs text-slate-300 italic line-clamp-2">
+          <div className="w-full max-w-sm mt-1 bg-slate-900/90 px-2.5 py-1 rounded-lg sm:rounded-xl border border-slate-700/60 shadow-sm text-center z-10">
+            <p className="text-[9px] sm:text-xs text-slate-300 italic line-clamp-1 sm:line-clamp-2">
               "{isVictory ? player.quotes.win : (enemy.quotes.win || enemy.quotes.loss)}"
             </p>
           </div>

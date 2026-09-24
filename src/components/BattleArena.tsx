@@ -1011,7 +1011,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
 
   return (
     <div
-      className={`relative flex-1 flex flex-col p-1 sm:p-2 md:p-3 select-none overflow-y-auto min-h-0 bg-slate-950 ${
+      className={`relative flex-1 flex flex-col justify-between p-1 sm:p-2 md:p-2.5 select-none overflow-hidden h-full max-h-[100dvh] w-full min-h-0 bg-slate-950 ${
         anim.screenShake === 'heavy' ? 'animate-heavy-shake' : anim.screenShake === 'medium' ? 'animate-shake' : anim.screenShake ? 'animate-shake' : ''
       }`}
     >
@@ -1026,17 +1026,17 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
       />
 
       {/* ARCADE FIGHTING GAME TOP HUD (SIDE-BY-SIDE ALIGNED - CLASSIC FIGHTER STYLE) */}
-      <div className="relative z-20 w-full max-w-5xl mx-auto mt-1 sm:mt-2 px-1 sm:px-3">
-        <div className="flex items-center justify-between gap-1.5 sm:gap-3 bg-slate-950/90 backdrop-blur-xs border border-slate-700/80 p-1.5 sm:p-2 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-1 sm:px-3 shrink-0 pt-0.5 sm:pt-1">
+        <div className="flex items-center justify-between gap-1 sm:gap-2.5 bg-slate-950/90 backdrop-blur-xs border border-slate-700/80 p-1 sm:p-2 rounded-xl sm:rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
           
           {/* PLAYER 1 (LEFT SIDE) */}
-          <div className="flex-1 flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <div className="flex-1 flex items-center gap-1 sm:gap-2 min-w-0">
             {/* Player Avatar Box */}
-            <div className="w-10 h-10 sm:w-13 sm:h-13 bg-slate-900 border-2 border-cyan-400 rounded-lg flex items-center justify-center shrink-0 relative overflow-hidden shadow-[0_0_12px_rgba(34,211,238,0.3)]">
-              <div className="absolute top-0 left-0 bg-cyan-500 text-black font-['Press_Start_2P'] text-[6px] sm:text-[7px] px-1 py-0.2 rounded-br font-bold z-10">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 bg-slate-900 border sm:border-2 border-cyan-400 rounded-md sm:rounded-lg flex items-center justify-center shrink-0 relative overflow-hidden shadow-[0_0_12px_rgba(34,211,238,0.3)]">
+              <div className="absolute top-0 left-0 bg-cyan-500 text-black font-['Press_Start_2P'] text-[5px] sm:text-[7px] px-0.5 sm:px-1 py-0.2 rounded-br font-bold z-10">
                 P1
               </div>
-              <div className="scale-[0.35] sm:scale-[0.45] origin-center translate-y-2 sm:translate-y-3">
+              <div className="scale-[0.3] sm:scale-[0.45] origin-center translate-y-1 sm:translate-y-2">
                 <PixelSprite character={activePlayer} action="idle" scale={activePlayer.type === 'boss' ? 1.2 : 1} />
               </div>
             </div>
@@ -1046,17 +1046,17 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
               <button
                 onClick={handleSwapCharacter}
                 disabled={isTurnProcessing || isPaused || partnerPlayerHp <= 0}
-                className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg border-2 flex items-center justify-center shrink-0 relative overflow-hidden transition-all cursor-pointer ${
+                className={`w-6 h-6 sm:w-8 sm:h-8 rounded-md sm:rounded-lg border sm:border-2 flex items-center justify-center shrink-0 relative overflow-hidden transition-all cursor-pointer ${
                   partnerPlayerHp > 0
                     ? 'border-purple-400 bg-purple-950/80 hover:border-cyan-300 hover:scale-105 active:scale-95 shadow-[0_0_8px_rgba(168,85,247,0.4)]'
                     : 'border-slate-800 bg-slate-950 opacity-40 cursor-not-allowed'
                 }`}
                 title={`Tag Partner: ${tagPartnerPlayer.name} (Click or TAB to Swap)`}
               >
-                <div className="absolute top-0 left-0 bg-purple-600 text-white font-['Press_Start_2P'] text-[5px] px-0.5 rounded-br z-10">
+                <div className="absolute top-0 left-0 bg-purple-600 text-white font-['Press_Start_2P'] text-[4px] sm:text-[5px] px-0.5 rounded-br z-10">
                   TAG
                 </div>
-                <div className="scale-[0.25] sm:scale-[0.3] origin-center translate-y-1">
+                <div className="scale-[0.2] sm:scale-[0.28] origin-center translate-y-0.5">
                   <PixelSprite character={tagPartnerPlayer} action="idle" />
                 </div>
               </button>
@@ -1065,23 +1065,23 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
             {/* Player Name, Health Bar & Energy */}
             <div className="flex-1 min-w-0 flex flex-col">
               {/* Name & Stats Row */}
-              <div className="flex items-center justify-between mb-0.5 sm:mb-1 gap-1">
+              <div className="flex items-center justify-between mb-0.5 gap-1">
                 <div className="flex items-center gap-1 truncate">
-                  <span className="font-['Press_Start_2P'] text-[8px] sm:text-[10px] text-cyan-300 drop-shadow-sm truncate">
+                  <span className="font-['Press_Start_2P'] text-[7.5px] sm:text-[9.5px] text-cyan-300 drop-shadow-sm truncate">
                     {activePlayer.name}
                   </span>
                   <span className="hidden sm:inline-block text-[7px] font-bold px-1 py-0.2 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800 uppercase">
                     {activePlayer.archetype}
                   </span>
                   {(playerBonusDmg > 0 || playerBonusAtkUpgrade > 0) && (
-                    <span className="text-[7px] font-bold px-1 py-0.2 rounded bg-amber-950/90 text-amber-300 border border-amber-500/60 uppercase tracking-tight">
+                    <span className="text-[6.5px] sm:text-[7px] font-bold px-1 py-0.2 rounded bg-amber-950/90 text-amber-300 border border-amber-500/60 uppercase tracking-tight">
                       +{playerBonusDmg + playerBonusAtkUpgrade} ATK
                     </span>
                   )}
                 </div>
-                <div className="flex items-center gap-1 shrink-0 font-mono text-[8px] sm:text-[10px] text-slate-300 font-bold">
+                <div className="flex items-center gap-1 shrink-0 font-mono text-[7.5px] sm:text-[9.5px] text-slate-300 font-bold">
                   {playerArmor > 0 && (
-                    <span className="text-[7px] sm:text-[8px] text-sky-300 bg-sky-950/90 px-1 py-0.2 rounded border border-sky-600">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-sky-300 bg-sky-950/90 px-1 py-0.2 rounded border border-sky-600">
                       🛡️{playerArmor}
                     </span>
                   )}
@@ -1090,7 +1090,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
               </div>
 
               {/* Health Bar */}
-              <div className="w-full h-2.5 sm:h-3.5 bg-slate-900 rounded border border-slate-700 overflow-hidden relative shadow-inner">
+              <div className="w-full h-2 sm:h-3.5 bg-slate-900 rounded border border-slate-700 overflow-hidden relative shadow-inner">
                 <div
                   className={`h-full transition-all duration-300 ease-out bg-gradient-to-r ${
                     playerHpPct > 50
@@ -1104,9 +1104,9 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
               </div>
 
               {/* Energy Pips & Status Row */}
-              <div className="flex items-center justify-between mt-0.5 sm:mt-1">
+              <div className="flex items-center justify-between mt-0.5">
                 <div className="flex items-center space-x-0.5 sm:space-x-1">
-                  <span className="text-[6px] sm:text-[8px] font-bold text-cyan-400 font-['Press_Start_2P'] tracking-tight mr-0.5">
+                  <span className="text-[5.5px] sm:text-[7.5px] font-bold text-cyan-400 font-['Press_Start_2P'] tracking-tight mr-0.5">
                     ENERGY
                   </span>
                   {[...Array(8)].map((_, i) => (
@@ -1117,29 +1117,29 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                       }`}
                     />
                   ))}
-                  <span className="text-[7px] sm:text-[8px] text-cyan-300 font-mono font-bold ml-1">
+                  <span className="text-[6.5px] sm:text-[7.5px] text-cyan-300 font-mono font-bold ml-0.5 sm:ml-1">
                     {playerExp}/8
                   </span>
                 </div>
 
                 <div className="flex items-center gap-1">
                   {isPlayerEvading && (
-                    <span className="text-[7px] sm:text-[8px] text-sky-300 font-bold animate-pulse">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-sky-300 font-bold animate-pulse">
                       [EVADING]
                     </span>
                   )}
                   {isPlayerOverdrive && (
-                    <span className="text-[7px] sm:text-[8px] text-amber-300 font-bold">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-amber-300 font-bold">
                       [OVERDRIVE]
                     </span>
                   )}
                   {nanoFrenzyStacks > 0 && (
-                    <span className="text-[7px] sm:text-[8px] text-emerald-300 font-bold">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-emerald-300 font-bold">
                       [+{nanoFrenzyStacks * 10}%]
                     </span>
                   )}
                   {playerStatus && (
-                    <span className="text-[7px] sm:text-[8px] text-yellow-300 font-bold uppercase">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-yellow-300 font-bold uppercase">
                       [{playerStatus.type}]
                     </span>
                   )}
@@ -1149,48 +1149,48 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
           </div>
 
           {/* CENTER ORNATE ARCADE ROUND / TIMER EMBLEM */}
-          <div className="flex flex-col items-center justify-center shrink-0 px-1">
-            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-gradient-to-b from-yellow-300 via-amber-600 to-amber-950 border-2 border-yellow-400 shadow-[0_0_15px_rgba(234,179,8,0.5)] flex flex-col items-center justify-center relative">
-              <span className="text-[6px] sm:text-[7px] font-bold text-yellow-200 tracking-wider">
+          <div className="flex flex-col items-center justify-center shrink-0 px-0.5 sm:px-1">
+            <div className="w-7 h-7 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-yellow-300 via-amber-600 to-amber-950 border sm:border-2 border-yellow-400 shadow-[0_0_12px_rgba(234,179,8,0.5)] flex flex-col items-center justify-center relative">
+              <span className="text-[5px] sm:text-[7px] font-bold text-yellow-200 tracking-wider">
                 {survivalStreak !== undefined ? 'STAGE' : 'RND'}
               </span>
-              <span className="font-['Press_Start_2P'] text-[9px] sm:text-[12px] text-yellow-100 drop-shadow-md">
+              <span className="font-['Press_Start_2P'] text-[8px] sm:text-[11px] text-yellow-100 drop-shadow-md">
                 {survivalStreak !== undefined ? survivalStreak + 1 : turnCount}
               </span>
             </div>
           </div>
 
           {/* ENEMY / COM (RIGHT SIDE) */}
-          <div className="flex-1 flex items-center gap-1.5 sm:gap-2 min-w-0 justify-end">
+          <div className="flex-1 flex items-center gap-1 sm:gap-2 min-w-0 justify-end">
             {/* Enemy Name, Health Bar & Energy (Mirrored Layout) */}
             <div className="flex-1 min-w-0 flex flex-col">
               {/* Name & Stats Row */}
-              <div className="flex items-center justify-between mb-0.5 sm:mb-1 gap-1">
-                <div className="flex items-center gap-1 shrink-0 font-mono text-[8px] sm:text-[10px] text-slate-300 font-bold">
+              <div className="flex items-center justify-between mb-0.5 gap-1">
+                <div className="flex items-center gap-1 shrink-0 font-mono text-[7.5px] sm:text-[9.5px] text-slate-300 font-bold">
                   <span>{enemyHp}/{enemyMaxHp}</span>
                   {enemyArmor > 0 && (
-                    <span className="text-[7px] sm:text-[8px] text-sky-300 bg-sky-950/90 px-1 py-0.2 rounded border border-sky-600">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-sky-300 bg-sky-950/90 px-1 py-0.2 rounded border border-sky-600">
                       🛡️{enemyArmor}
                     </span>
                   )}
                 </div>
                 <div className="flex items-center gap-1 truncate justify-end">
                   {(enemyBonusHp > 0 || enemyBonusDmg > 0) && (
-                    <span className="text-[7px] font-bold px-1 py-0.2 rounded bg-rose-950/90 text-rose-300 border border-rose-500/60 uppercase tracking-tight">
+                    <span className="text-[6.5px] sm:text-[7px] font-bold px-1 py-0.2 rounded bg-rose-950/90 text-rose-300 border border-rose-500/60 uppercase tracking-tight">
                       +{enemyBonusHp} HP / +{enemyBonusDmg} ATK
                     </span>
                   )}
                   <span className="hidden sm:inline-block text-[7px] font-bold px-1 py-0.2 rounded bg-rose-950/80 text-rose-300 border border-rose-800 uppercase">
                     {activeEnemy.archetype}
                   </span>
-                  <span className="font-['Press_Start_2P'] text-[8px] sm:text-[10px] text-rose-300 drop-shadow-sm truncate text-right">
+                  <span className="font-['Press_Start_2P'] text-[7.5px] sm:text-[9.5px] text-rose-300 drop-shadow-sm truncate text-right">
                     {activeEnemy.name}
                   </span>
                 </div>
               </div>
 
               {/* Health Bar (Inward facing mirror) */}
-              <div className="w-full h-2.5 sm:h-3.5 bg-slate-900 rounded border border-slate-700 overflow-hidden relative shadow-inner flex justify-end">
+              <div className="w-full h-2 sm:h-3.5 bg-slate-900 rounded border border-slate-700 overflow-hidden relative shadow-inner flex justify-end">
                 <div
                   className={`h-full transition-all duration-300 ease-out bg-gradient-to-r ${
                     enemyHpPct > 50
@@ -1204,32 +1204,32 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
               </div>
 
               {/* Energy Pips & Status Row */}
-              <div className="flex items-center justify-between mt-0.5 sm:mt-1">
+              <div className="flex items-center justify-between mt-0.5">
                 <div className="flex items-center gap-1">
                   {enemyStatus && (
-                    <span className="text-[7px] sm:text-[8px] text-yellow-300 font-bold uppercase">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-yellow-300 font-bold uppercase">
                       [{enemyStatus.type}]
                     </span>
                   )}
                   {enemyNanoStacks > 0 && (
-                    <span className="text-[7px] sm:text-[8px] text-emerald-300 font-bold">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-emerald-300 font-bold">
                       [+{enemyNanoStacks * 10}%]
                     </span>
                   )}
                   {isEnemyEvading && (
-                    <span className="text-[7px] sm:text-[8px] text-sky-300 font-bold animate-pulse">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-sky-300 font-bold animate-pulse">
                       [EVADING]
                     </span>
                   )}
                   {isEnemyOverdrive && (
-                    <span className="text-[7px] sm:text-[8px] text-amber-300 font-bold">
+                    <span className="text-[6.5px] sm:text-[7.5px] text-amber-300 font-bold">
                       [OVERDRIVE]
                     </span>
                   )}
                 </div>
 
                 <div className="flex items-center space-x-0.5 sm:space-x-1">
-                  <span className="text-[7px] sm:text-[8px] text-rose-300 font-mono font-bold mr-1">
+                  <span className="text-[6.5px] sm:text-[7.5px] text-rose-300 font-mono font-bold mr-0.5 sm:mr-1">
                     {enemyExp}/8
                   </span>
                   {[...Array(8)].map((_, i) => (
@@ -1240,7 +1240,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                       }`}
                     />
                   ))}
-                  <span className="text-[6px] sm:text-[8px] font-bold text-rose-400 font-['Press_Start_2P'] tracking-tight ml-0.5">
+                  <span className="text-[5.5px] sm:text-[7.5px] font-bold text-rose-400 font-['Press_Start_2P'] tracking-tight ml-0.5">
                     ENERGY
                   </span>
                 </div>
@@ -1250,28 +1250,28 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
             {/* Rival Duo Partner Portrait */}
             {isDuoMode && tagPartnerEnemy && (
               <div
-                className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg border-2 flex items-center justify-center shrink-0 relative overflow-hidden ${
+                className={`w-6 h-6 sm:w-8 sm:h-8 rounded-md sm:rounded-lg border sm:border-2 flex items-center justify-center shrink-0 relative overflow-hidden ${
                   partnerEnemyHp > 0
                     ? 'border-rose-400 bg-rose-950/80 shadow-[0_0_8px_rgba(244,63,94,0.4)]'
                     : 'border-slate-800 bg-slate-950 opacity-40'
                 }`}
                 title={`Rival Partner: ${tagPartnerEnemy.name}`}
               >
-                <div className="absolute top-0 right-0 bg-rose-600 text-white font-['Press_Start_2P'] text-[5px] px-0.5 rounded-bl z-10">
+                <div className="absolute top-0 right-0 bg-rose-600 text-white font-['Press_Start_2P'] text-[4px] sm:text-[5px] px-0.5 rounded-bl z-10">
                   TAG
                 </div>
-                <div className="scale-[0.25] sm:scale-[0.3] origin-center translate-y-1">
+                <div className="scale-[0.2] sm:scale-[0.28] origin-center translate-y-0.5">
                   <PixelSprite character={tagPartnerEnemy} action="idle" isFlipped={true} />
                 </div>
               </div>
             )}
 
             {/* Enemy Avatar Box */}
-            <div className="w-10 h-10 sm:w-13 sm:h-13 bg-slate-900 border-2 border-rose-500 rounded-lg flex items-center justify-center shrink-0 relative overflow-hidden shadow-[0_0_12px_rgba(244,63,94,0.3)]">
-              <div className="absolute top-0 right-0 bg-rose-500 text-white font-['Press_Start_2P'] text-[6px] sm:text-[7px] px-1 py-0.2 rounded-bl font-bold z-10">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 bg-slate-900 border sm:border-2 border-rose-500 rounded-md sm:rounded-lg flex items-center justify-center shrink-0 relative overflow-hidden shadow-[0_0_12px_rgba(244,63,94,0.3)]">
+              <div className="absolute top-0 right-0 bg-rose-500 text-white font-['Press_Start_2P'] text-[5px] sm:text-[7px] px-0.5 sm:px-1 py-0.2 rounded-bl font-bold z-10">
                 COM
               </div>
-              <div className="scale-[0.35] sm:scale-[0.45] origin-center translate-y-2 sm:translate-y-3">
+              <div className="scale-[0.3] sm:scale-[0.45] origin-center translate-y-1 sm:translate-y-2">
                 <PixelSprite character={activeEnemy} action="idle" isFlipped={true} scale={activeEnemy.type === 'boss' ? 1.2 : 1} />
               </div>
             </div>
@@ -1283,21 +1283,21 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
             className="p-1 sm:p-1.5 rounded-lg bg-slate-800/80 border border-slate-600 text-slate-300 hover:text-white hover:bg-slate-700 transition-all shrink-0 ml-0.5"
             title="Pause Game (ESC / P)"
           >
-            <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Pause className="w-3 h-3 sm:w-4 sm:h-4" />
           </button>
         </div>
       </div>
 
       {/* CENTER FIGHTING STAGE & PIXEL SPRITES */}
-      <div className="relative z-10 flex-1 flex items-end justify-around px-4 sm:px-16 pb-2 sm:pb-5 min-h-[130px] sm:min-h-[180px]">
+      <div className="relative z-10 flex-1 min-h-0 flex items-end justify-around px-2 sm:px-16 pb-1 sm:pb-3">
 
         {/* PLAYER SPRITE (LEFT) */}
         <div
           className={`relative flex flex-col items-center transition-transform duration-300 ease-out will-change-transform ${
             anim.playerAction === 'attack' || anim.playerAction === 'combo'
-              ? 'translate-x-12 sm:translate-x-24 scale-105'
+              ? 'translate-x-8 sm:translate-x-24 scale-105'
               : anim.playerAction === 'hit'
-              ? '-translate-x-6 sm:-translate-x-8 rotate-2 brightness-125'
+              ? '-translate-x-4 sm:-translate-x-8 rotate-2 brightness-125'
               : ''
           }`}
         >
@@ -1312,34 +1312,36 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                   animate={{ y: -80, opacity: [0, 1, 1, 0], scale: [0.5, 1.3, 1.1, 1.1] }}
                   transition={{ duration: 1.2, times: [0, 0.15, 0.8, 1], ease: "easeOut" }}
                   exit={{ opacity: 0 }}
-                  className="absolute -top-12 font-['Press_Start_2P'] text-base sm:text-xl font-bold whitespace-nowrap z-50 pointer-events-none"
+                  className="absolute -top-10 sm:-top-12 font-['Press_Start_2P'] text-xs sm:text-xl font-bold whitespace-nowrap z-50 pointer-events-none"
                   style={{ 
                     color: d.color || '#ef4444',
                     textShadow: '0 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                   }}
                 >
-                  {d.isCrit && <div className="text-[10px] text-yellow-300 text-center mb-1 tracking-widest">CRITICAL HIT</div>}
+                  {d.isCrit && <div className="text-[8px] sm:text-[10px] text-yellow-300 text-center mb-0.5 tracking-widest">CRITICAL HIT</div>}
                   {d.text.replace('CRITICAL! ', '')}
                 </motion.div>
               ))}
           </AnimatePresence>
 
-          <PixelSprite character={activePlayer} action={anim.playerAction} scale={activePlayer.type === 'boss' ? 1.5 : 1} />
+          <div className="scale-[0.68] xs:scale-[0.8] sm:scale-100 origin-bottom">
+            <PixelSprite character={activePlayer} action={anim.playerAction} scale={activePlayer.type === 'boss' ? 1.4 : 1} />
+          </div>
           
           {/* Shadow on floor */}
-          <div className="w-20 sm:w-28 h-3 bg-black/40 rounded-full blur-[2px] mt-1" />
+          <div className="w-14 sm:w-28 h-2 sm:h-3 bg-black/40 rounded-full blur-[2px] mt-0.5" />
 
           {/* Stance / Passive Indicator */}
-          <div className="mt-2 font-bold text-[8px] sm:text-[9px] text-cyan-300 bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
+          <div className="mt-0.5 sm:mt-1 font-bold text-[6.5px] sm:text-[9px] text-cyan-300 bg-slate-900/90 px-1.5 sm:px-2.5 py-0.2 sm:py-0.5 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
             <span>
               {isPlayerEvading
-                ? '✨ DECOY EVASION'
+                ? '✨ EVADING'
                 : playerArmor > 0
                 ? `🛡️ ARMOR: ${playerArmor}`
                 : isPlayerOverdrive
-                ? '⚡ OVERDRIVE READY'
+                ? '⚡ OVERDRIVE'
                 : nanoFrenzyStacks > 0
-                ? `🌀 NANO FRENZY +${nanoFrenzyStacks * 10}%`
+                ? `🌀 FRENZY +${nanoFrenzyStacks * 10}%`
                 : isPlayerDefending
                 ? '🛡️ GUARDING'
                 : activePlayer.passiveTraitName}
@@ -1351,9 +1353,9 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         <div
           className={`relative flex flex-col items-center transition-transform duration-300 ease-out will-change-transform ${
             anim.enemyAction === 'attack' || anim.enemyAction === 'combo'
-              ? '-translate-x-12 sm:-translate-x-24 scale-105'
+              ? '-translate-x-8 sm:-translate-x-24 scale-105'
               : anim.enemyAction === 'hit'
-              ? 'translate-x-6 sm:translate-x-8 -rotate-2 brightness-125'
+              ? 'translate-x-4 sm:translate-x-8 -rotate-2 brightness-125'
               : ''
           }`}
         >
@@ -1368,28 +1370,30 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                   animate={{ y: -80, opacity: [0, 1, 1, 0], scale: [0.5, 1.4, 1.1, 1.1] }}
                   transition={{ duration: 1.2, times: [0, 0.15, 0.8, 1], ease: "easeOut" }}
                   exit={{ opacity: 0 }}
-                  className="absolute -top-12 font-['Press_Start_2P'] text-base sm:text-xl font-bold whitespace-nowrap z-50 pointer-events-none"
+                  className="absolute -top-10 sm:-top-12 font-['Press_Start_2P'] text-xs sm:text-xl font-bold whitespace-nowrap z-50 pointer-events-none"
                   style={{ 
                     color: d.color || '#ef4444',
                     textShadow: '0 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                   }}
                 >
-                  {d.isCrit && <div className="text-[10px] text-yellow-300 text-center mb-1 tracking-widest animate-pulse">CRITICAL HIT</div>}
+                  {d.isCrit && <div className="text-[8px] sm:text-[10px] text-yellow-300 text-center mb-0.5 tracking-widest animate-pulse">CRITICAL HIT</div>}
                   {d.text.replace('CRITICAL! ', '')}
                 </motion.div>
               ))}
           </AnimatePresence>
 
-          <PixelSprite character={activeEnemy} action={anim.enemyAction} isFlipped={true} scale={activeEnemy.type === 'boss' ? 1.5 : 1} />
+          <div className="scale-[0.68] xs:scale-[0.8] sm:scale-100 origin-bottom">
+            <PixelSprite character={activeEnemy} action={anim.enemyAction} isFlipped={true} scale={activeEnemy.type === 'boss' ? 1.4 : 1} />
+          </div>
 
           {/* Shadow on floor */}
-          <div className="w-20 sm:w-28 h-3 bg-black/40 rounded-full blur-[2px] mt-1" />
+          <div className="w-14 sm:w-28 h-2 sm:h-3 bg-black/40 rounded-full blur-[2px] mt-0.5" />
 
           {/* Enemy Stance Indicator */}
-          <div className="mt-2 font-bold text-[8px] sm:text-[9px] text-rose-300 bg-slate-900/90 px-2.5 py-0.5 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
+          <div className="mt-0.5 sm:mt-1 font-bold text-[6.5px] sm:text-[9px] text-rose-300 bg-slate-900/90 px-1.5 sm:px-2.5 py-0.2 sm:py-0.5 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
             <span>
               {isEnemyEvading
-                ? '✨ DECOY EVASION'
+                ? '✨ EVADING'
                 : enemyArmor > 0
                 ? `🛡️ ARMOR: ${enemyArmor}`
                 : isEnemyOverdrive
@@ -1401,10 +1405,10 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
       </div>
 
       {/* BATTLE LOG / DIALOG BOX */}
-      <div className="relative z-20 w-full max-w-5xl mx-auto px-2 sm:px-4 mt-1 mb-2">
-        <div className="bg-slate-900/90 border-2 border-slate-700 rounded-2xl p-2.5 shadow-xl min-h-[44px] flex items-center justify-center">
+      <div className="relative z-20 w-full max-w-4xl mx-auto px-1 sm:px-3 my-0.5 shrink-0">
+        <div className="bg-slate-900/90 border border-slate-700/80 rounded-lg sm:rounded-xl px-2 py-0.5 sm:py-1 shadow-md min-h-[22px] sm:min-h-[32px] flex items-center justify-center">
            {logs.length > 0 && (
-             <div className="text-center font-medium text-xs sm:text-sm text-slate-100 line-clamp-2">
+             <div className="text-center font-medium text-[8px] sm:text-xs text-slate-100 line-clamp-1">
                {logs[logs.length - 1].text}
              </div>
            )}
@@ -1412,29 +1416,29 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
       </div>
 
       {/* BOTTOM SKILL ACTION BUTTONS - 7-SKILL LOADOUT & DUO SWAP */}
-      <div className="relative z-20 w-full max-w-5xl mx-auto px-1 sm:px-2 pb-2">
-        <div className="flex items-center justify-between mb-1 px-1">
-          <div className="flex items-center space-x-1.5 text-[8px] sm:text-[9px] font-bold text-slate-400">
-            <span className="text-cyan-400 font-['Press_Start_2P'] text-[7px] sm:text-[8px]">
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-1 sm:px-2 pb-1 sm:pb-2 shrink-0">
+        <div className="flex items-center justify-between mb-0.5 px-0.5">
+          <div className="flex items-center space-x-1 text-[6.5px] sm:text-[8.5px] font-bold text-slate-400">
+            <span className="text-cyan-400 font-['Press_Start_2P'] text-[6px] sm:text-[7.5px]">
               {activePlayer.name.toUpperCase()}
             </span>
-            <span>• {activePlayer.skills.length} SKILLS LOADED</span>
-            <span className="hidden md:inline text-slate-500 font-mono">[1-7] OR [Q-U]</span>
+            <span>• {activePlayer.skills.length} SKILLS</span>
+            <span className="hidden md:inline text-slate-500 font-mono">[1-7]</span>
           </div>
 
           {isDuoMode && tagPartnerPlayer && (
             <button
               onClick={handleSwapCharacter}
               disabled={isTurnProcessing || isPaused || partnerPlayerHp <= 0}
-              className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg border font-['Press_Start_2P'] text-[7px] sm:text-[8px] flex items-center space-x-1.5 transition-all cursor-pointer ${
+              className={`px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded border font-['Press_Start_2P'] text-[6px] sm:text-[7.5px] flex items-center space-x-1 transition-all cursor-pointer ${
                 partnerPlayerHp > 0 && !isTurnProcessing
                   ? 'bg-purple-900/90 hover:bg-purple-800 border-purple-400 text-purple-200 shadow-[0_0_8px_rgba(168,85,247,0.4)] active:scale-95'
                   : 'bg-slate-900 border-slate-800 text-slate-600 opacity-50 cursor-not-allowed'
               }`}
               title="Swap Tag Partner (TAB or S)"
             >
-              <Repeat className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-              <span>SWAP: {tagPartnerPlayer.name.slice(0, 9)} (TAB)</span>
+              <Repeat className="w-2 h-2 sm:w-2.5 sm:h-2.5" />
+              <span>SWAP ({tagPartnerPlayer.name.slice(0, 6)})</span>
             </button>
           )}
         </div>
@@ -1447,7 +1451,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
               animate={{ scale: [1, 1.06, 1], opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: -8 }}
               transition={{ duration: 0.2 }}
-              className="absolute -top-11 left-1/2 -translate-x-1/2 z-50 bg-red-950/95 border-2 border-red-500 text-red-100 px-4 py-1.5 rounded-xl shadow-[0_0_24px_rgba(239,68,68,0.9)] flex items-center gap-2 font-['Press_Start_2P'] text-[9px] sm:text-[11px] whitespace-nowrap pointer-events-none"
+              className="absolute -top-10 left-1/2 -translate-x-1/2 z-50 bg-red-950/95 border-2 border-red-500 text-red-100 px-3 py-1 rounded-xl shadow-[0_0_24px_rgba(239,68,68,0.9)] flex items-center gap-1.5 font-['Press_Start_2P'] text-[8px] sm:text-[10px] whitespace-nowrap pointer-events-none"
             >
               <span className="text-yellow-400 animate-bounce">⚡</span>
               <span className="animate-pulse tracking-wider text-red-100 drop-shadow">NOT ENOUGH ENERGY</span>
@@ -1456,56 +1460,56 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
           )}
         </AnimatePresence>
 
-        <div className="grid grid-cols-4 sm:grid-cols-7 gap-1 sm:gap-1.5">
+        <div className="grid grid-cols-4 landscape:grid-cols-7 sm:grid-cols-7 gap-1">
           {activePlayer.skills.map((skill, idx) => {
             const cost = skill.expCost || 0;
             const canAfford = playerExp >= cost && !isTurnProcessing && !isPaused;
             const isUltimate = skill.type === 'ultimate';
 
             // Category configuration
-            let categoryIcon = <Swords className="w-2.5 h-2.5 sm:w-3 sm:h-3" />;
+            let categoryIcon = <Swords className="w-2 h-2 sm:w-3 sm:h-3" />;
             let categoryBadgeStyle = 'bg-slate-800 text-slate-300 border-slate-700';
             let cardStyle = 'bg-slate-900 border-slate-700 text-slate-200 hover:border-slate-500';
 
             if (isUltimate) {
-              categoryIcon = <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-400" />;
+              categoryIcon = <Sparkles className="w-2 h-2 sm:w-3 sm:h-3 text-amber-400" />;
               categoryBadgeStyle = 'bg-amber-950 text-amber-300 border-amber-500';
               cardStyle = canAfford
                 ? 'bg-gradient-to-b from-amber-950/70 to-slate-900 border-amber-400 text-amber-100 shadow-[0_0_12px_rgba(245,158,11,0.3)] hover:border-amber-300'
                 : 'bg-slate-950 border-slate-800 text-slate-600 opacity-60';
             } else if (skill.category === 'DEFENSE') {
-              categoryIcon = <Shield className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-sky-400" />;
+              categoryIcon = <Shield className="w-2 h-2 sm:w-3 sm:h-3 text-sky-400" />;
               categoryBadgeStyle = 'bg-sky-950 text-sky-300 border-sky-600';
               cardStyle = canAfford
                 ? 'bg-slate-900/90 border-sky-500 text-sky-100 hover:bg-sky-950/40 hover:border-sky-400'
                 : 'bg-slate-950 border-slate-800 text-slate-600 opacity-60';
             } else if (skill.category === 'RECOVERY') {
-              categoryIcon = <Heart className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-emerald-400" />;
+              categoryIcon = <Heart className="w-2 h-2 sm:w-3 sm:h-3 text-emerald-400" />;
               categoryBadgeStyle = 'bg-emerald-950 text-emerald-300 border-emerald-600';
               cardStyle = canAfford
                 ? 'bg-slate-900/90 border-emerald-500 text-emerald-100 hover:bg-emerald-950/40 hover:border-emerald-400'
                 : 'bg-slate-950 border-slate-800 text-slate-600 opacity-60';
             } else if (skill.category === 'ENERGY') {
-              categoryIcon = <Zap className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-cyan-400" />;
+              categoryIcon = <Zap className="w-2 h-2 sm:w-3 sm:h-3 text-cyan-400" />;
               categoryBadgeStyle = 'bg-cyan-950 text-cyan-300 border-cyan-600';
               cardStyle = canAfford
                 ? 'bg-slate-900/90 border-cyan-500 text-cyan-100 hover:bg-cyan-950/40 hover:border-cyan-400'
                 : 'bg-slate-950 border-slate-800 text-slate-600 opacity-60';
             } else if (skill.category === 'EXPLOSIVE') {
-              categoryIcon = <Flame className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-orange-400" />;
+              categoryIcon = <Flame className="w-2 h-2 sm:w-3 sm:h-3 text-orange-400" />;
               categoryBadgeStyle = 'bg-orange-950 text-orange-300 border-orange-600';
               cardStyle = canAfford
                 ? 'bg-slate-900/90 border-orange-500 text-orange-100 hover:bg-orange-950/40 hover:border-orange-400'
                 : 'bg-slate-950 border-slate-800 text-slate-600 opacity-60';
             } else if (skill.category === 'STATUS') {
-              categoryIcon = <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-purple-400" />;
+              categoryIcon = <Sparkles className="w-2 h-2 sm:w-3 sm:h-3 text-purple-400" />;
               categoryBadgeStyle = 'bg-purple-950 text-purple-300 border-purple-600';
               cardStyle = canAfford
                 ? 'bg-slate-900/90 border-purple-500 text-purple-100 hover:bg-purple-950/40 hover:border-purple-400'
                 : 'bg-slate-950 border-slate-800 text-slate-600 opacity-60';
             } else {
               // PHYSICAL
-              categoryIcon = <Swords className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-300" />;
+              categoryIcon = <Swords className="w-2 h-2 sm:w-3 sm:h-3 text-slate-300" />;
               categoryBadgeStyle = 'bg-slate-800 text-slate-300 border-slate-600';
               cardStyle = canAfford
                 ? 'bg-slate-900/90 border-slate-500 text-slate-200 hover:bg-slate-800 hover:border-slate-400'
@@ -1521,7 +1525,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
             } else if (skill.effect === 'evade') {
               primaryEffect = 'EVADE 1T';
             } else if (skill.effect === 'armor') {
-              primaryEffect = `+${skill.effectValue || 30} ARMOR`;
+              primaryEffect = `+${skill.effectValue || 30} ARM`;
             } else if (skill.effect === 'heal') {
               primaryEffect = `+${skill.effectValue || 20} HP`;
             } else if (skill.effect === 'empower') {
@@ -1535,7 +1539,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
             // Resource Display
             let resourceLabel = '';
             if (cost > 0) {
-              resourceLabel = `${cost}⚡ EN`;
+              resourceLabel = `${cost}⚡`;
             } else if (skill.expGain) {
               resourceLabel = `+${skill.expGain}⚡`;
             } else {
@@ -1548,41 +1552,34 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                 id={`btn-skill-${skill.key.toLowerCase()}`}
                 disabled={isTurnProcessing || isPaused}
                 onClick={() => handleUseSkill(idx)}
-                className={`relative min-h-[92px] sm:min-h-[104px] p-2 sm:p-2.5 rounded-xl border transition-all text-left transform active:scale-95 flex flex-col justify-between cursor-pointer ${cardStyle} ${idx === 6 ? 'col-span-2 sm:col-span-1' : ''}`}
+                className={`relative min-h-[46px] xs:min-h-[50px] sm:min-h-[86px] p-1 sm:p-2 rounded-lg sm:rounded-xl border transition-all text-left transform active:scale-95 flex flex-col justify-between cursor-pointer ${cardStyle} ${idx === 6 ? 'col-span-1 sm:col-span-1 landscape:col-span-1' : ''}`}
               >
                 {/* Region 1: TYPE & [KEY] */}
-                <div className="flex items-center justify-between w-full mb-1">
-                  <div className={`flex items-center gap-1 text-[7.5px] sm:text-[8px] font-bold px-1.5 py-0.5 rounded border ${categoryBadgeStyle} shrink-0`}>
+                <div className="flex items-center justify-between w-full">
+                  <div className={`flex items-center gap-0.5 sm:gap-1 text-[6px] sm:text-[7.5px] font-bold px-1 py-0.2 rounded border ${categoryBadgeStyle} shrink-0`}>
                     {categoryIcon}
-                    <span>{isUltimate ? 'ULT' : skill.category.slice(0, 5)}</span>
+                    <span className="hidden xs:inline sm:inline">{isUltimate ? 'ULT' : skill.category.slice(0, 4)}</span>
                   </div>
-                  <span className="font-['Press_Start_2P'] text-[7.5px] sm:text-[8px] text-slate-300 bg-slate-950/80 px-1.5 py-0.5 rounded border border-slate-700/60 font-bold shrink-0">
+                  <span className="font-['Press_Start_2P'] text-[6px] sm:text-[7.5px] text-slate-300 bg-slate-950/80 px-1 py-0.2 rounded border border-slate-700/60 font-bold shrink-0">
                     {skill.key}
                   </span>
                 </div>
 
-                {/* Region 2: SKILL NAME (Wrapped, 2 lines max, never overlapping) */}
-                <div className="min-h-[26px] sm:min-h-[30px] flex items-center my-0.5">
-                  <div className="font-['Press_Start_2P'] text-[7.5px] sm:text-[8.5px] leading-snug text-white line-clamp-2 break-words">
+                {/* Region 2: SKILL NAME */}
+                <div className="my-0.5">
+                  <div className="font-['Press_Start_2P'] text-[6px] xs:text-[6.5px] sm:text-[8px] leading-tight text-white truncate sm:line-clamp-2">
                     {skill.name}
                   </div>
                 </div>
 
-                {/* Region 3: DAMAGE / EFFECT */}
-                <div className="text-[8px] sm:text-[9px] font-bold text-amber-300 my-0.5 truncate">
-                  {primaryEffect}
-                </div>
-
-                {/* Region 4: RESOURCE COST / GAIN & TYPE */}
-                <div className="flex items-center justify-between text-[7.5px] sm:text-[8.5px] pt-1 border-t border-slate-700/60 font-mono mt-0.5">
+                {/* Region 3: DAMAGE / EFFECT & RESOURCE */}
+                <div className="flex items-center justify-between text-[6px] sm:text-[7.5px] pt-0.5 border-t border-slate-700/50 font-mono">
+                  <span className="font-bold text-amber-300 truncate max-w-[60%]">
+                    {primaryEffect}
+                  </span>
                   <span className={cost > 0 ? (canAfford ? 'text-cyan-300 font-bold' : 'text-rose-400 font-bold') : 'text-emerald-400 font-bold'}>
                     {resourceLabel}
                   </span>
-                  {skill.type && (
-                    <span className="text-slate-400 uppercase text-[6.5px] sm:text-[7.5px] font-semibold">
-                      {skill.type.slice(0, 5)}
-                    </span>
-                  )}
                 </div>
               </button>
             );

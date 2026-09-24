@@ -13,7 +13,6 @@ import { VsSplashScreen } from './components/VsSplashScreen';
 import { BattleArena } from './components/BattleArena';
 import { VictoryScreen } from './components/VictoryScreen';
 import { playSelectSound } from './utils/audio';
-import { RotateCcw } from 'lucide-react';
 
 export default function App() {
   // Game progression phases
@@ -484,16 +483,6 @@ export default function App() {
           />
         )}
       </CrtOverlay>
-
-      {/* PORTRAIT OVERLAY FOR MOBILE */}
-      <div className="landscape-overlay">
-        <div className="flex flex-col items-center text-center space-y-4">
-          <h2 className="font-['Press_Start_2P'] text-cyan-400 text-xl">CYBER CITY</h2>
-          <RotateCcw className="w-16 h-16 text-slate-100 animate-[spin_3s_linear_infinite]" />
-          <h1 className="font-bold text-2xl tracking-widest uppercase">Rotate Device</h1>
-          <p className="text-slate-400 font-medium">Landscape mode recommended</p>
-        </div>
-      </div>
     </>
   );
 }
