@@ -137,7 +137,7 @@ export const ArenaBackground: React.FC<ArenaBackgroundProps> = ({ map }) => {
           <motion.div 
             animate={{ opacity: [1, 0.8, 1, 0.9, 1, 0.5, 1] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="hidden portrait:flex absolute top-14 sm:top-18 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-xl bg-black/85 border border-cyan-400 shadow-[0_0_15px_#06b6d4] items-center space-x-2 pointer-events-none"
+            className="hidden portrait:flex absolute top-20 xs:top-24 sm:top-28 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-xl bg-black/85 border border-cyan-400 shadow-[0_0_15px_#06b6d4] items-center space-x-2 pointer-events-none"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
             <span className="font-['Press_Start_2P'] text-[7.5px] sm:text-[9.5px] text-yellow-300 drop-shadow-[0_0_8px_#eab308]">

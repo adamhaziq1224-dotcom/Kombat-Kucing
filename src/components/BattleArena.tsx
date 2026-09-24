@@ -1289,7 +1289,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
       </div>
 
       {/* CENTER FIGHTING STAGE & PIXEL SPRITES */}
-      <div className="relative z-10 flex-1 min-h-0 flex items-center justify-around portrait:justify-center portrait:gap-8 xs:portrait:gap-14 sm:portrait:gap-20 px-2 sm:px-16 landscape:items-end landscape:pb-0.5 portrait:items-center portrait:py-2">
+      <div className="relative z-10 flex-1 min-h-0 flex items-center justify-around portrait:justify-center portrait:gap-6 xs:portrait:gap-10 sm:portrait:gap-16 px-2 sm:px-16 landscape:items-end landscape:pb-0.5 portrait:items-end portrait:pb-2 sm:portrait:pb-4">
 
         {/* PLAYER SPRITE (LEFT) */}
         <div
@@ -1324,15 +1324,15 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
               ))}
           </AnimatePresence>
 
-          <div className="scale-[0.8] portrait:scale-[1.38] xs:portrait:scale-[1.5] sm:portrait:scale-[1.6] landscape:scale-[0.55] sm:landscape:scale-[0.65] origin-bottom transition-transform">
+          <div className="scale-[0.8] portrait:scale-[1.12] xs:portrait:scale-[1.22] sm:portrait:scale-[1.32] landscape:scale-[0.55] sm:landscape:scale-[0.65] origin-bottom transition-transform">
             <PixelSprite character={activePlayer} action={anim.playerAction} scale={activePlayer.type === 'boss' ? 1.4 : 1} />
           </div>
           
           {/* Shadow on floor */}
-          <div className="w-20 sm:w-28 landscape:w-12 h-2.5 sm:h-3 landscape:h-1.5 bg-black/40 rounded-full blur-[2px] mt-1" />
+          <div className="w-16 xs:w-20 sm:w-24 landscape:w-12 h-2 sm:h-2.5 landscape:h-1.5 bg-black/50 rounded-full blur-[2px] mt-0.5" />
 
           {/* Stance / Passive Indicator */}
-          <div className="mt-1 sm:mt-1.5 landscape:mt-0 font-bold text-[7px] sm:text-[9px] landscape:text-[5.5px] text-cyan-300 bg-slate-900/90 px-2 sm:px-2.5 landscape:px-1 py-0.5 landscape:py-0 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
+          <div className="mt-1 sm:mt-1.5 landscape:mt-0 font-bold text-[6.5px] xs:text-[7px] sm:text-[8.5px] landscape:text-[5.5px] text-cyan-300 bg-slate-900/90 px-1.5 xs:px-2 sm:px-2.5 landscape:px-1 py-0.5 landscape:py-0 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
             <span>
               {isPlayerEvading
                 ? '✨ EVADING'
@@ -1382,15 +1382,15 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
               ))}
           </AnimatePresence>
 
-          <div className="scale-[0.8] portrait:scale-[1.38] xs:portrait:scale-[1.5] sm:portrait:scale-[1.6] landscape:scale-[0.55] sm:landscape:scale-[0.65] origin-bottom transition-transform">
+          <div className="scale-[0.8] portrait:scale-[1.12] xs:portrait:scale-[1.22] sm:portrait:scale-[1.32] landscape:scale-[0.55] sm:landscape:scale-[0.65] origin-bottom transition-transform">
             <PixelSprite character={activeEnemy} action={anim.enemyAction} isFlipped={true} scale={activeEnemy.type === 'boss' ? 1.4 : 1} />
           </div>
 
           {/* Shadow on floor */}
-          <div className="w-20 sm:w-28 landscape:w-12 h-2.5 sm:h-3 landscape:h-1.5 bg-black/40 rounded-full blur-[2px] mt-1" />
+          <div className="w-16 xs:w-20 sm:w-24 landscape:w-12 h-2 sm:h-2.5 landscape:h-1.5 bg-black/50 rounded-full blur-[2px] mt-0.5" />
 
           {/* Enemy Stance Indicator */}
-          <div className="mt-1 sm:mt-1.5 landscape:mt-0 font-bold text-[7px] sm:text-[9px] landscape:text-[5.5px] text-rose-300 bg-slate-900/90 px-2 sm:px-2.5 landscape:px-1 py-0.5 landscape:py-0 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
+          <div className="mt-1 sm:mt-1.5 landscape:mt-0 font-bold text-[6.5px] xs:text-[7px] sm:text-[8.5px] landscape:text-[5.5px] text-rose-300 bg-slate-900/90 px-1.5 xs:px-2 sm:px-2.5 landscape:px-1 py-0.5 landscape:py-0 rounded-full border border-slate-700 flex items-center space-x-1 shadow-md">
             <span>
               {isEnemyEvading
                 ? '✨ EVADING'
