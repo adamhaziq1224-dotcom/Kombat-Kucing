@@ -1,0 +1,6 @@
+{
+  "name": "Kombat Kucing: Cyber City",
+  "description": "A classic 16-bit creature-battler RPG set in a cyberpunk city. Collect, train, and battle pixel-art combatants!",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
