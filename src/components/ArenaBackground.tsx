@@ -133,17 +133,17 @@ export const ArenaBackground: React.FC<ArenaBackgroundProps> = ({ map }) => {
             <div className="w-16 h-0.5 bg-rose-400/80" />
           </motion.div>
 
-          {/* Giant Neon Billboard Banner in Sky */}
+          {/* Giant Neon Billboard Banner in Sky (Visible in Portrait, Hidden in Landscape to prevent blocking fighters) */}
           <motion.div 
             animate={{ opacity: [1, 0.8, 1, 0.9, 1, 0.5, 1] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-12 left-1/2 -translate-x-1/2 z-10 px-4 py-1.5 rounded-xl bg-black/80 border-2 border-cyan-400 shadow-[0_0_20px_#06b6d4] flex items-center space-x-3"
+            className="hidden portrait:flex absolute top-14 sm:top-18 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-xl bg-black/85 border border-cyan-400 shadow-[0_0_15px_#06b6d4] items-center space-x-2 pointer-events-none"
           >
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span className="font-['Press_Start_2P'] text-[10px] sm:text-xs text-yellow-300 drop-shadow-[0_0_8px_#eab308]">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+            <span className="font-['Press_Start_2P'] text-[7.5px] sm:text-[9.5px] text-yellow-300 drop-shadow-[0_0_8px_#eab308]">
               🌃 CYBER METROPOLIS ARENA
             </span>
-            <span className="w-2 h-2 rounded-full bg-pink-500 animate-ping" />
+            <span className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-ping" />
           </motion.div>
 
           {/* Perspective Grid Floor */}
